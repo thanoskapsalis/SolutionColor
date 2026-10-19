@@ -1,0 +1,51 @@
+<platformUi:DialogWindow x:Class="SolutionColor.ColorPickerDialog"
+                         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                         xmlns:platformUi="clr-namespace:Microsoft.VisualStudio.PlatformUI;assembly=Microsoft.VisualStudio.Shell.15.0"
+                         Title="Solution Color"
+                         Width="460"
+                         SizeToContent="Height"
+                         ResizeMode="NoResize"
+                         WindowStartupLocation="CenterOwner"
+                         ShowInTaskbar="False"
+                         HasMinimizeButton="False"
+                         HasMaximizeButton="False"
+                         Background="{DynamicResource {x:Static platformUi:EnvironmentColors.ToolWindowBackgroundBrushKey}}"
+                         Foreground="{DynamicResource {x:Static platformUi:EnvironmentColors.ToolWindowTextBrushKey}}">
+    <StackPanel Margin="16">
+
+        <!-- Preview of the title bar -->
+        <Border x:Name="Preview" Height="40" CornerRadius="4" Padding="12,0" Margin="0,0,0,14">
+            <DockPanel VerticalAlignment="Center">
+                <Image x:Name="PreviewIcon" Width="20" Height="20" Margin="0,0,10,0" />
+                <TextBlock x:Name="PreviewText" VerticalAlignment="Center" FontWeight="SemiBold" TextTrimming="CharacterEllipsis" />
+            </DockPanel>
+        </Border>
+
+        <TextBlock Text="Presets" Margin="0,0,0,6" FontWeight="SemiBold" />
+        <WrapPanel x:Name="Swatches" Margin="0,0,0,12" />
+
+        <DockPanel Margin="0,0,0,12" LastChildFill="False">
+            <TextBlock Text="Hex:" VerticalAlignment="Center" Margin="0,0,8,0" />
+            <TextBox x:Name="HexBox" Width="90" VerticalContentAlignment="Center" Padding="4,2" TextChanged="HexBox_TextChanged" />
+            <Button Content="More colors..." Margin="8,0,0,0" Padding="10,3" Click="MoreColors_Click" />
+            <Button Content="From name" Margin="8,0,0,0" Padding="10,3" Click="FromName_Click"
+                    ToolTip="Generate a stable color from the solution name" />
+        </DockPanel>
+
+        <CheckBox x:Name="TitleBarCheck" Content="Color the title bar" Margin="0,2" />
+        <CheckBox x:Name="IconCheck" Content="Tint the Visual Studio icon (title bar and window icon)" Margin="0,2" />
+        <CheckBox x:Name="BadgeCheck" Content="Show a colored badge on the taskbar button" Margin="0,2" />
+        <CheckBox x:Name="BorderCheck" Content="Color the window border (Windows 11)" Margin="0,2" />
+        <CheckBox x:Name="SharedCheck" Margin="0,8,0,2"
+                  ToolTip="Saves the color next to the solution file so it can be committed. Otherwise it is stored per user in the .vs folder.">
+            <TextBlock x:Name="SharedText" TextWrapping="Wrap" />
+        </CheckBox>
+
+        <DockPanel Margin="0,16,0,0" LastChildFill="False">
+            <Button Content="Remove color" Padding="12,4" Click="Remove_Click" DockPanel.Dock="Left" />
+            <Button Content="Cancel" Padding="12,4" MinWidth="80" IsCancel="True" DockPanel.Dock="Right" Margin="8,0,0,0" />
+            <Button Content="OK" Padding="12,4" MinWidth="80" IsDefault="True" Click="Ok_Click" DockPanel.Dock="Right" />
+        </DockPanel>
+    </StackPanel>
+</platformUi:DialogWindow>

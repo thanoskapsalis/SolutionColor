@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <Extern href="stdidcmd.h" />
+  <Extern href="vsshlids.h" />
+  <Include href="KnownImageIds.vsct" />
+
+  <Commands package="guidSolutionColorPackage">
+    <Groups>
+      <Group guid="guidSolutionColorCmdSet" id="SolutionNodeGroup" priority="0x0600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_SOLNNODE" />
+      </Group>
+      <Group guid="guidSolutionColorCmdSet" id="ToolsMenuGroup" priority="0x0600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS" />
+      </Group>
+    </Groups>
+
+    <Buttons>
+      <Button guid="guidSolutionColorCmdSet" id="cmdidSetSolutionColor" priority="0x0100" type="Button">
+        <Parent guid="guidSolutionColorCmdSet" id="SolutionNodeGroup" />
+        <Icon guid="ImageCatalogGuid" id="ColorPalette" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <Strings>
+          <ButtonText>Solution Co&amp;lor...</ButtonText>
+          <CanonicalName>.SolutionColor.SetSolutionColor</CanonicalName>
+          <LocCanonicalName>.SolutionColor.SetSolutionColor</LocCanonicalName>
+        </Strings>
+      </Button>
+    </Buttons>
+  </Commands>
+
+  <CommandPlacements>
+    <CommandPlacement guid="guidSolutionColorCmdSet" id="cmdidSetSolutionColor" priority="0x0100">
+      <Parent guid="guidSolutionColorCmdSet" id="ToolsMenuGroup" />
+    </CommandPlacement>
+  </CommandPlacements>
+
+  <VisibilityConstraints>
+    <VisibilityItem guid="guidSolutionColorCmdSet" id="cmdidSetSolutionColor" context="UICONTEXT_SolutionExists" />
+  </VisibilityConstraints>
+
+  <Symbols>
+    <GuidSymbol name="guidSolutionColorPackage" value="{9e6abb40-3450-4778-a6b6-0a966d8709d6}" />
+    <GuidSymbol name="guidSolutionColorCmdSet" value="{f90de3a5-88a6-491e-9fb9-eb9cdf3917a4}">
+      <IDSymbol name="SolutionNodeGroup" value="0x1020" />
+      <IDSymbol name="ToolsMenuGroup" value="0x1021" />
+      <IDSymbol name="cmdidSetSolutionColor" value="0x0100" />
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>
